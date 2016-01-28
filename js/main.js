@@ -1,5 +1,6 @@
 function init(){
 	cities();
+	addEvents();
 };
 
 
@@ -16,7 +17,7 @@ function addColumns(cityPop){
 
     		//Declare, but don't define new variable "citySize"	
     		var citySize;
-
+    		
     		//if the population of the city is less than 100,000 assign
     		//the citySize variable to "Small"
     		if (cityPop[i-1].population < 100000){
@@ -25,7 +26,7 @@ function addColumns(cityPop){
     		//Otherwise if the city's population is less thab 500,000
     		//assign the citySize variable to "Medium"
     		} else if (cityPop[i-1].population < 500000){
-    			citysize = 'Medium';
+    			citySize = 'Medium';
 
     		//If neither of the previous criteria are met, assign the 
     		//variable citySize to "Large"
@@ -41,15 +42,16 @@ function addColumns(cityPop){
 
 function addEvents(){
 
-	$('#table').mouseover(function(){
+	$('table').mouseover(function(){
 		
 		var color = "rgb(";
+		console.log("color = ");
 
 		for (var i=0; i<3; i++){
 
 			var random = Math.round(Math.random() * 255);
 
-			color += "random";
+			color += random;
 
 			if (i<2){
 				color += ",";
@@ -59,6 +61,7 @@ function addEvents(){
 			};
 
 		};
+
 
 		$(this).css('color', color);
 	});
