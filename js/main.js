@@ -8,6 +8,8 @@
 function init(){
 	cities();
 	addEvents();
+	jQueryAjax();
+	debugAjax();
 };
 
 
@@ -155,6 +157,46 @@ function cities(){
 	//add an addition column to the table
 	addColumns(cityPop);
 };
+
+function jQueryAjax(){
+    //define a variable to hold the data
+    var mydata;
+
+    //basic jQuery ajax method
+    $.ajax("data/MegaCities.geojson", {
+        dataType: "json",
+        success: function(response){
+
+        	//assign data to the variable
+            mydata = response;
+
+            //check the data
+            console.log(mydata);
+        }
+    });
+
+    //check the data
+    console.log(mydata);
+};
+
+function debugCallback(response){
+	
+	//add the geojson data to the webpage
+	$(mydiv).append('GeoJSON data: ' + JSON.stringify(response));
+};
+
+function debugAjax(){
+	
+	//load the data
+	$.ajax("data/MegaCities.geojson", {
+		dataType: "json",
+		success: function(response){
+			//on success pass the data to a callback function
+			debugCallback(response);
+		}
+	});
+};
+
 
 //webpage is loaded, can begin calling functions
 $(document).ready(init);
