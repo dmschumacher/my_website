@@ -158,6 +158,8 @@ function cities(){
 	addColumns(cityPop);
 };
 
+//load geojson data and test where the data is
+// accessible by printing it to the console
 function jQueryAjax(){
     //define a variable to hold the data
     var mydata;
@@ -179,15 +181,18 @@ function jQueryAjax(){
     console.log(mydata);
 };
 
+
+//Callback function to add geojson data to mydiv
 function debugCallback(response){
 	
 	//add the geojson data to the webpage
 	$(mydiv).append('GeoJSON data: ' + JSON.stringify(response));
 };
 
+//function to joad geojson data
 function debugAjax(){
 	
-	//load the data
+	//jQuery Ajax method
 	$.ajax("data/MegaCities.geojson", {
 		dataType: "json",
 		success: function(response){
